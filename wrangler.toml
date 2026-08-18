@@ -1,6 +1,0 @@
-name = "insani-herbal-store"
-main = "dist/index.html"
-compatibility_date = "2026-08-18"
-
-[env.production]
-vars = { NODE_VERSION = "20" }
