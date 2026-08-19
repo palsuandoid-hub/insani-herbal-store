@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Link, Navigate, Route, Routes, useParams, useSearchParams, useLocation } from 'react-router-dom'
-import { ArrowRight, Check, ChevronDown, MessageCircle, ShieldCheck, Sparkles, Loader2, Clock, XCircle, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Check, ChevronDown, MessageCircle, ShieldCheck, Sparkles, Loader as Loader2, Clock, Circle as XCircle, CircleCheck as CheckCircle2 } from 'lucide-react'
 import { supabase } from './lib/supabase'
 import { initMetaPixel, trackPageView, trackPurchase, loadMidtransSnap } from './lib/metaPixel'
 import { distributors, formatPrice, globalAdvantages } from './data/dummyProducts'
