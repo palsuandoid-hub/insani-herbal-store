@@ -3,12 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-const isValidUrl = typeof supabaseUrl === 'string' && /^https:\/\/[^\s/]+/.test(supabaseUrl)
-
-if (!isValidUrl || !supabaseAnonKey) {
-  console.error('[v0] Supabase configuration is missing or invalid. Check the project environment variables.')
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('[v0] Supabase environment variables are missing. Product queries will fail until they are configured.')
 }
 
-export const supabase = isValidUrl && supabaseAnonKey
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null
+export const supabase = createClient(supabaseUrl || 'https://placeholder.supabase.co', supabaseAnonKey || 'placeholder-anon-key')

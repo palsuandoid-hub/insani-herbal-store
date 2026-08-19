@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
-  <rect width="400" height="300" fill="#f5f0e8"/>
-  <circle cx="200" cy="130" r="50" fill="#e5e0d5"/>
-  <rect x="170" y="170" width="60" height="80" rx="8" fill="#c5d4c0"/>
-  <text x="200" y="280" text-anchor="middle" font-family="serif" font-size="16" fill="#6b6b6b">Insani Herbal</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title"><title>Gambar produk herbal Insani</title><rect width="900" height="700" fill="#f1e7d5"/><circle cx="450" cy="330" r="160" fill="#183b32"/><path d="M450 170c-75 42-108 111-93 190 16 82 82 118 93 122 12-4 78-40 93-122 15-79-18-148-93-190Z" fill="#c58a32"/><text x="450" y="355" text-anchor="middle" fill="#fffdf8" font-family="Georgia,serif" font-size="44">INSANI</text><text x="450" y="410" text-anchor="middle" fill="#fffdf8" font-family="sans-serif" font-size="16" letter-spacing="5">HERBAL</text></svg>
