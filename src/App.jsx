@@ -8,6 +8,7 @@ import { distributors, formatPrice, globalAdvantages } from './data/dummyProduct
 const waUrl = 'https://wa.me/6281234567890'
 const defaultPalette = { primary: '#183b32', secondary: '#fffdf8', accent: '#c85d3b', hex1: ['#183b32', '#2f6b58'], hex2: ['#fffdf8', '#f1e7d5'], hex3: ['#c85d3b', '#e58b63'], label1: 'Hijau Insani', label2: 'Putih hangat', label3: 'Terracotta' }
 const getPalette = (palette) => ({ ...defaultPalette, ...(palette && typeof palette === 'object' ? palette : {}) })
+const normalizeProduct = (product) => ({ ...product, pallet_warna: getPalette(product?.pallet_warna), pain_points: Array.isArray(product?.pain_points) && product.pain_points.length ? product.pain_points : ['Ingin pilihan herbal dengan informasi yang jelas', 'Mencari cara praktis untuk membangun kebiasaan baik', 'Membutuhkan produk yang mudah masuk ke rutinitas'], edukasi: product?.edukasi || 'Padukan produk dengan tidur cukup, makan seimbang, bergerak, dan konsultasi dengan tenaga kesehatan bila diperlukan.', komposisi: Array.isArray(product?.komposisi) ? product.komposisi : [], aturan_pakai: product?.aturan_pakai || 'Ikuti aturan pakai pada kemasan.' })
 const isValidProduct = (product) => product && ['slug', 'nama_produk', 'informasi', 'indikasi', 'fungsi_utama', 'harga_utama', 'harga_diskon', 'gambar', 'komposisi', 'aturan_pakai'].every((field) => product[field] !== undefined && product[field] !== null)
 const paletteStyle = (palette) => { const p = getPalette(palette); return { '--product-primary': p.primary, '--product-secondary': p.secondary, '--product-accent': p.accent, '--product-bg-gradient': `linear-gradient(135deg, ${p.hex1?.[0] || defaultPalette.hex1[0]}, ${p.hex1?.[1] || defaultPalette.hex1[1]})`, '--product-card-gradient': `linear-gradient(135deg, ${p.hex2?.[0] || defaultPalette.hex2[0]}, ${p.hex2?.[1] || defaultPalette.hex2[1]})`, '--product-accent-gradient': `linear-gradient(135deg, ${p.hex3?.[0] || defaultPalette.hex3[0]}, ${p.hex3?.[1] || defaultPalette.hex3[1]})` } }
 
@@ -52,6 +53,7 @@ const Detail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       setLoading(true)
+      if (!supabase) { setProduct(null); setLoading(false); return }
       const { data, error } = await supabase
         .from('products')
         .select('*')
@@ -59,7 +61,7 @@ const Detail = () => {
         .eq('is_active', true)
         .maybeSingle()
       if (error || !data || !isValidProduct(data)) { setProduct(null) }
-      else { setProduct(data); trackPageView() }
+      else { setProduct(normalizeProduct(data)); trackPageView() }
       setLoading(false)
     }
     fetchProduct()
