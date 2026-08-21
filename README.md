@@ -1,65 +1,33 @@
-# Insani Herbal Catalog
+# insani-herbal-store
 
-Katalog produk herbal Insani dengan halaman detail per produk, form pemesanan dengan ongkir otomatis (Biteship), dan pembayaran online (Midtrans Snap).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
 
-## Teknologi
+## Built with v0
 
-- **React 19** + **Vite** — frontend SPA
-- **React Router 7** — routing multi-halaman
-- **Tailwind CSS 4** — styling
-- **Supabase** — database (produk & pesanan)
-- **Biteship API** — autocomplete area & tarif kurir (via Cloudflare Pages Function)
-- **Midtrans Snap** — pembayaran online (via Cloudflare Pages Function)
-- **Meta Pixel** — tracking PageView & Purchase events
-- **Cloudflare Pages Functions** — serverless API proxy ( `/functions/api/` )
+This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
 
-## Fitur
+[Continue working on v0 →](https://v0.app/chat/projects/prj_2rt6gk3bbeAw5LW314VRu5hWKtuu)
 
-- Katalog produk yang diambil dari Supabase
-- Halaman detail per produk dengan palet warna per produk
-- Form pemesanan dengan autocomplete kecamatan, pilihan kurir, dan ongkir real-time
-- Pembayaran via Midtrans Snap popup
-- Halaman hasil pembayaran: `/payment/finish`, `/payment/unfinish`, `/payment/error`
-- Webhook Midtrans untuk update status pembayaran di Supabase
-- Meta Pixel: PageView di halaman produk, Purchase saat pembayaran berhasil
+## Getting Started
 
-## Environment Variables
-
-### Frontend-safe (di `.env`)
-| Variable | Keterangan |
-|---|---|
-| `VITE_SUPABASE_URL` | URL project Supabase |
-| `VITE_SUPABASE_ANON_KEY` | Anon key Supabase (public) |
-| `VITE_MIDTRANS_CLIENT_KEY` | Midtrans Client Key (aman untuk browser) |
-| `VITE_BITESHIP_ORIGIN_ID` | Biteship area_id gudang asal |
-| `VITE_META_PIXEL_ID` | Meta/Facebook Pixel ID |
-
-### Server-only (di Cloudflare Pages dashboard)
-| Variable | Keterangan |
-|---|---|
-| `BITESHIP_API_KEY` | API key Biteship (rahasia) |
-| `MIDTRANS_SERVER_KEY` | Midtrans Server Key (rahasia) |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase Service Role Key (bypass RLS) |
-
-## Cloudflare Pages Functions
-
-- `ongkir.js` — GET: autocomplete area; POST: tarif kurir
-- `checkout.js` — POST: buat transaksi Midtrans Snap
-- `webhook.js` — POST: notifikasi Midtrans, update status di Supabase
-
-## Memulai
+First, run the development server:
 
 ```bash
-npm install
 npm run dev
-npm run build
-npm run preview
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-## Midtrans
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Saat ini menggunakan **sandbox**. Untuk produksi:
-1. Ganti URL di `functions/api/checkout.js` dan `functions/api/webhook.js` dari `sandbox.midtrans.com` ke `midtrans.com`
-2. Ganti key dengan key produksi
-3. Set redirect URL di dashboard Midtrans ke `/payment/finish`, `/payment/unfinish`, `/payment/error`
-4. Set webhook notification URL ke `/api/webhook`
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Learn More
+
+To learn more, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
